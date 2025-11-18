@@ -1,7 +1,12 @@
+import 'package:chatapp_ui/domain/constants/app_themes.dart';
+import 'package:chatapp_ui/domain/constants/cubits/theme_cubit.dart';
+import 'package:chatapp_ui/domain/constants/cubits/theme_states.dart';
+import 'package:chatapp_ui/repository/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (_) => ThemeCubit(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -9,12 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'A CHAT APP',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      //home: ,
+    return BlocBuilder<ThemeCubit, ThemeStates>(
+      builder: (context, states) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'A CHAT APP',
+          theme: states is LightThemeStates ? AppThemes.lightTheme : AppThemes.darkTheme,
+          home: OnboardingScreen(),
+        );
+      },
     );
   }
 }
