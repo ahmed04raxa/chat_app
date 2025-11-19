@@ -1,5 +1,4 @@
 import 'package:chatapp_ui/domain/constants/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UiHelper {
@@ -39,7 +38,9 @@ class UiHelper {
       height: 52,
       width: 327,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          callback();
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.buttonLightMode,
           shape: RoundedRectangleBorder(
@@ -52,6 +53,41 @@ class UiHelper {
             fontSize: 16,
             color: Colors.white,
             fontWeight: FontWeight.w300,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static customTextField({
+    required TextEditingController controller,
+    required String text,
+    required TextInputType textInputType,
+    required BuildContext context,
+  }) {
+    return Container(
+      height: 45,
+      width: 350,
+      decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.containerDarkMode
+            : AppColors.containerLightMode,
+        borderRadius: BorderRadius.circular(7),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: TextField(
+          controller: controller,
+          keyboardType: textInputType,
+          decoration: InputDecoration(
+            hintText: text,
+            hintStyle: TextStyle(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.hintTextDarkMode
+                  : AppColors.hintTextLightMode,
+              fontSize: 14
+            ),
+            border: InputBorder.none,
           ),
         ),
       ),

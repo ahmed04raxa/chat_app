@@ -1,4 +1,6 @@
+import 'package:chatapp_ui/domain/constants/app_colors.dart';
 import 'package:chatapp_ui/domain/constants/cubits/theme_cubit.dart';
+import 'package:chatapp_ui/repository/screens/login/login_screen.dart';
 import 'package:chatapp_ui/repository/widgets/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,16 +11,24 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: [
-        IconButton(onPressed: (){
-          BlocProvider.of<ThemeCubit>(context).toggleTheme();
-        }, icon: Icon(Icons.dark_mode))
-      ],),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.scaffoldDark
+            : AppColors.scaffoldLight,
+        actions: [
+          IconButton(
+            onPressed: () {
+              BlocProvider.of<ThemeCubit>(context).toggleTheme();
+            },
+            icon: Icon(Icons.dark_mode),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UiHelper.customImage(imgUrl: "onboarding.png"),
+            //UiHelper.customImage(imgUrl: "onboardingLight.png"),
             SizedBox(height: 20),
             UiHelper.customText(
               context: context,
@@ -46,7 +56,12 @@ class OnboardingScreen extends StatelessWidget {
       ),
       floatingActionButton: UiHelper.customButton(
         text: "Start Messaging",
-        callback: () {},
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
