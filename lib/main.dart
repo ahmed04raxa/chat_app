@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (context, states) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'A CHAT APP',
+          title: 'CHAT APP',
           theme: states is LightThemeStates ? AppThemes.lightTheme : AppThemes.darkTheme,
           home: OnboardingScreen(),
         );

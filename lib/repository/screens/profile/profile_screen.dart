@@ -1,3 +1,4 @@
+import 'package:chatapp_ui/repository/screens/bottomnav/bottom_navigation_screen.dart';
 import 'package:chatapp_ui/repository/widgets/ui_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      floatingActionButton: UiHelper.customButton(text: "Save", callback: (){}),
+      floatingActionButton: UiHelper.customButton(
+        text: "Save",
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BottomNavigationScreen()),
+          );
+        },
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
