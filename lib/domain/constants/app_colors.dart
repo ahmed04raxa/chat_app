@@ -21,4 +21,6 @@ class AppColors {
   static const Color iconDarkMode = Color(0XFFF7F7FC);
   static const Color bottomLightMode = Color(0XFFFFFFFF);
   static const Color bottomDarkMode = Color(0XFF0F1828);
+  static const Color iconLight = Color(0XFFADB5BD);
+  static const Color iconDark = Color(0XFFADB5BD);
 }

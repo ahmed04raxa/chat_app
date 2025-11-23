@@ -56,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: phoneController,
               text: "Phone Number",
               textInputType: TextInputType.phone,
+              iconData: Icons.phone
             ),
           ],
         ),

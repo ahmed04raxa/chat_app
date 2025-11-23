@@ -48,6 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               controller: firstNameController,
               text: "First Name (Required)",
               textInputType: TextInputType.name,
+              iconData: Icons.person
             ),
             SizedBox(height: 10),
             UiHelper.customTextField(
@@ -55,6 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               controller: firstNameController,
               text: "Last Name (Optional)",
               textInputType: TextInputType.name,
+              iconData: CupertinoIcons.person
             ),
           ],
         ),
@@ -62,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       floatingActionButton: UiHelper.customButton(
         text: "Save",
         callback: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => BottomNavigationScreen()),
           );

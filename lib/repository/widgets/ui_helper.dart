@@ -7,12 +7,12 @@ class UiHelper {
   }
 
   static customText({
-    required BuildContext context,
     required String text,
     required double fontSize,
     String? fontFamily,
     FontWeight? fontWeight,
     Color? color,
+    required BuildContext context,
   }) {
     return Text(
       text,
@@ -65,6 +65,7 @@ class UiHelper {
     required String text,
     required TextInputType textInputType,
     required BuildContext context,
+    required IconData iconData,
   }) {
     return Container(
       height: 45,
@@ -75,21 +76,19 @@ class UiHelper {
             : AppColors.containerLightMode,
         borderRadius: BorderRadius.circular(7),
       ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 10),
-        child: TextField(
-          controller: controller,
-          keyboardType: textInputType,
-          decoration: InputDecoration(
-            hintText: text,
-            hintStyle: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? AppColors.hintTextDarkMode
-                  : AppColors.hintTextLightMode,
-              fontSize: 14,
-            ),
-            border: InputBorder.none,
+      child: TextField(
+        controller: controller,
+        keyboardType: textInputType,
+        decoration: InputDecoration(
+          prefixIcon: Icon(iconData, color: AppColors.iconLight),
+          hintText: text,
+          hintStyle: TextStyle(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? AppColors.hintTextDarkMode
+                : AppColors.hintTextLightMode,
+            fontSize: 14,
           ),
+          border: InputBorder.none,
         ),
       ),
     );
